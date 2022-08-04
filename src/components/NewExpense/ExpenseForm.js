@@ -21,10 +21,10 @@ const ExpenseForm = (props) => {
 			amount: enteredAmount,
 			date: new Date(enteredDate),
 		};
-		props.onSaveExpenseData();
+		props.onSaveExpenseData(expenseData);
 		setEnteredTitle("");
 		setEnteredAmount("");
-		setEnteredDate("");
+		setEnteredDate(null);
 	};
 
 	return (
@@ -33,6 +33,7 @@ const ExpenseForm = (props) => {
 				sx={{ m: 1 }}
 				id='standard-basic'
 				label='Title'
+				value={enteredTitle}
 				onChange={titleChangeHandler}
 			/>
 
@@ -41,6 +42,7 @@ const ExpenseForm = (props) => {
 				id='outlined-number'
 				label='Number'
 				type='number'
+				value={enteredAmount}
 				onChange={amountChangeHandler}
 			/>
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
