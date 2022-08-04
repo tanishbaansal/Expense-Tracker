@@ -1,7 +1,15 @@
 import ExpenseItem from "./ExpenseItem";
-const expenses = (props) => {
+import ExpensesFilter from "./../Filter/ExpensesFilter";
+import { useState } from "react";
+const Expenses = (props) => {
+	const [filteredYear, setfilteredYear] = useState("2022");
+	const saveFilter = (filterYear) => {
+		console.log(`Filter For Year ${filterYear}`);
+		setfilteredYear(filterYear);
+	};
 	return (
-		<div className='expenses'>
+		<div>
+			<ExpensesFilter filterYear={filteredYear} onExpensesFilter={saveFilter} />
 			<ExpenseItem
 				title={props.items[0].title}
 				amount={props.items[0].amount}
@@ -26,4 +34,4 @@ const expenses = (props) => {
 	);
 };
 
-export default expenses;
+export default Expenses;

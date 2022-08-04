@@ -2,8 +2,9 @@ import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpenses";
 import Container from "@mui/material/Container";
 
-import CardContent from "@mui/material/CardContent";
-import { Card } from "@mui/material";
+import * as React from "react";
+import Paper from "@mui/material/Paper";
+
 const App = (props) => {
 	const expenses = [
 		{
@@ -28,12 +29,20 @@ const App = (props) => {
 	];
 
 	return (
-		<Container className='container'>
-			<Card sx={{ bgcolor: "#fafafa" }}>
-				<CardContent>
-					<NewExpense />
-				</CardContent>
-			</Card>
+		// <Container className='container'>
+		// 	<Grid container spacing={2} sx={{ marginTop: 2, marginBottom: 4 }}>
+		// 		<Grid item xs>
+		// 			<Item sx={{ p: 2 }}>
+		// 				<NewExpense />
+		// 			</Item>
+		// 		</Grid>
+		// 	</Grid>
+		// 	<Expenses items={expenses} />
+		// </Container>
+		<Container maxWidth='lg'>
+			<Paper elevation={3} sx={{ my: 5 }}>
+				<NewExpense />
+			</Paper>
 			<Expenses items={expenses} />
 		</Container>
 	);

@@ -1,8 +1,10 @@
-import { TextField, Button, CardActions } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import { useState, React } from "react";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Grid from "@mui/material/Grid";
+
 const ExpenseForm = (props) => {
 	const [enteredTitle, setEnteredTitle] = useState("");
 	const [enteredAmount, setEnteredAmount] = useState("");
@@ -29,37 +31,47 @@ const ExpenseForm = (props) => {
 
 	return (
 		<form onSubmit={submitHandler}>
-			<TextField
-				sx={{ m: 1 }}
-				id='standard-basic'
-				label='Title'
-				value={enteredTitle}
-				onChange={titleChangeHandler}
-			/>
+			<Grid container spacing={2} sx={{ p: 2 }}>
+				<Grid item xs>
+					<TextField
+						fullWidth
+						id='standard-basic'
+						label='Title'
+						value={enteredTitle}
+						onChange={titleChangeHandler}
+					/>
+				</Grid>
+				<Grid item xs>
+					<TextField
+						fullWidth
+						id='outlined-number'
+						label='Number'
+						type='number'
+						value={enteredAmount}
+						onChange={amountChangeHandler}
+					/>
+				</Grid>
+				<Grid item xs>
+					<LocalizationProvider dateAdapter={AdapterDateFns}>
+						<DatePicker
+							label='Date'
+							value={enteredDate}
+							onChange={(newValue) => {
+								setEnteredDate(newValue);
+							}}
+							renderInput={(params) => <TextField fullWidth {...params} />}
+						/>
+					</LocalizationProvider>
+				</Grid>
+			</Grid>
 
-			<TextField
-				sx={{ m: 1 }}
-				id='outlined-number'
-				label='Number'
-				type='number'
-				value={enteredAmount}
-				onChange={amountChangeHandler}
-			/>
-			<LocalizationProvider dateAdapter={AdapterDateFns}>
-				<DatePicker
-					label='Date'
-					value={enteredDate}
-					onChange={(newValue) => {
-						setEnteredDate(newValue);
-					}}
-					renderInput={(params) => <TextField sx={{ m: 1 }} {...params} />}
-				/>
-			</LocalizationProvider>
-			<CardActions>
-				<Button variant='contained' type='submit'>
-					Add Expense
-				</Button>
-			</CardActions>
+			<Button
+				variant='contained'
+				type='submit'
+				fullWidth
+				sx={{ p: 2, mt: 2, borderRadius: "0 0 4px 4px" }}>
+				Add Expense
+			</Button>
 		</form>
 	);
 };
