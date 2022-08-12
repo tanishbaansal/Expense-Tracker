@@ -9,7 +9,6 @@ const ExpenseItem = (props) => {
 	const [title, setTitle] = useState(props.title);
 	const clickHandler = () => {
 		setTitle("Wow");
-		console.log(title);
 	};
 	return (
 		<Card className='expense-item'>

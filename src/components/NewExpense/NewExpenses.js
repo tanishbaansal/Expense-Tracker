@@ -1,13 +1,15 @@
+import { useState } from "react";
 import ExpenseForm from "./ExpenseForm";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
 	const saveExpenseData = (enteredExpenseData) => {
 		const expenseData = {
 			...enteredExpenseData,
 			id: Math.random().toString(),
 		};
-		console.log(expenseData);
+		props.onSaveExpenses(expenseData);
 	};
+
 	return <ExpenseForm onSaveExpenseData={saveExpenseData} />;
 };
 export default NewExpense;
