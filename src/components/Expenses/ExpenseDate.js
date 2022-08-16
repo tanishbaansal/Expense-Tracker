@@ -21,7 +21,6 @@ const ExpenseDate = (props) => {
 				flexDirection: "column",
 				":hover": {
 					boxShadow: 6,
-					cursor: "pointer",
 					color: "white",
 					bgcolor: "#000000",
 					transition: "all 0.2s ease-in-out",

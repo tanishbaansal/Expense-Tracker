@@ -16,9 +16,6 @@ const ExpenseItem = (props) => {
 			<div className='expense-item__description'>
 				<h2>{title}</h2>
 				<Button variant='outlined'>${props.amount}</Button>
-				<Button variant='contained' onClick={clickHandler}>
-					Change Title
-				</Button>
 			</div>
 		</Card>
 	);

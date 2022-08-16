@@ -1,11 +1,16 @@
 import React from "react";
-import { Card } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import ExpenseItem from "./ExpenseItem";
 const ExpensesList = (props) => {
 	if (props.items.length === 0) {
 		return (
-			<Card className='expense-item'>
-				<p>Found no expenses.</p>
+			<Card>
+				<Typography
+					variant='h5'
+					sx={{ p: 5, textAlign: "center" }}
+					component='div'>
+					Found no expenses.
+				</Typography>
 			</Card>
 		);
 	}
