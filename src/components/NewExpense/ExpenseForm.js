@@ -22,7 +22,7 @@ const ExpenseForm = (props) => {
 			event.preventDefault();
 			const expenseData = {
 				title: enteredTitle,
-				amount: enteredAmount,
+				amount: +enteredAmount,
 				date: new Date(enteredDate),
 			};
 			props.onSaveExpenseData(expenseData);
@@ -39,7 +39,7 @@ const ExpenseForm = (props) => {
 						<TextField
 							fullWidth
 							id='standard-basic'
-							label='Title'
+							label='Expense Title'
 							value={enteredTitle}
 							onChange={titleChangeHandler}
 						/>
@@ -48,7 +48,7 @@ const ExpenseForm = (props) => {
 						<TextField
 							fullWidth
 							id='outlined-number'
-							label='Number'
+							label='Expense Amount'
 							type='number'
 							value={enteredAmount}
 							onChange={amountChangeHandler}
